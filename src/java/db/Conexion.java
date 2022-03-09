@@ -58,7 +58,7 @@ public class Conexion {
        
         try{
           
-            String sql="select * from producto";
+            String sql="select * from restaurantonline";
              ResultSet rs;
              Statement st= conec.createStatement();
              rs=st.executeQuery(sql);
