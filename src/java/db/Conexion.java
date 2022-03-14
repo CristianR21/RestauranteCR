@@ -1,84 +1,65 @@
 /*
 cristian Adair Ramirez Rodriguez
 Fecha de creación:8/03/2022, 10:43:34 AM
-Fecha de actualización:09/03/2022 09:00 AM
+Fecha de actualización:14/03/2022 09:00 AM
 Descripción: Clase del producto
  */
 package db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
+
 
 public class Conexion {
 
-    static Connection conexion;
-    String url = "jdbc:postgresql://localhost/restaurantonline";
-    String user = "postgres";
-    String password = "cristian20";
+    private Connection connection;
+    private String url = "localhost";
+    private String user = "postgres";
+    private String pwd = "cristian20";
+    private String bd = "restauranteonline";
 
     public Conexion() {
-
     }
 
-    public Conexion(Connection conexion, String url, String user, String password) {
-        this.conexion = conexion;
+    public Conexion(Connection conecction, String url, String user, String pwd) {
+        this.connection = conecction;
         this.url = url;
         this.user = user;
-        this.password = password;
+        this.pwd = pwd;
     }
 
-    public Connection Conectar() {
-        Connection con = null;
-        try {
-            Class.forName("org.postgresql.Driver");
-            conexion = DriverManager.getConnection(url,user,password);
-            System.out.println("Conexion con exito");
-        } catch (Exception e) {
-            System.out.println(e.toString());
+    public void Conectar() throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            try {
+                Class.forName("org.postgresql.Driver");
+                connection = DriverManager.getConnection("jdbc:postgresql://" + url + "/" + bd, user, pwd);
+                System.out.println("Conexion exitosa");
+            } catch (Exception ex) {
+                System.out.println("Error de conexion: " + ex.getMessage());
+            }
         }
-        return con;
     }
 
-    public void Desconectar() {
-        try {
-            conexion.close();
-            System.out.println("Conexion cerrada");
-        } catch (Exception e) {
-            System.out.println(e.toString());
+    public void Desconectar() throws SQLException {
+        if (connection != null && !connection.isClosed()) {
+            try {
+                connection.close();
+                System.out.println("Desconexion exitosa");
+            } catch (Exception ex) {
+                System.out.println("Error de desconectar: " + ex.getMessage());
+            }
         }
-
     }
 
-    public static void main(String[] args) {
-        Connection conec = null;
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public static void main(String[] args) throws SQLException {
         Conexion con = new Conexion();
         con.Conectar();
-       
-        try{
-          
-            String sql="select * from restaurantonline"
-                    + "";
-             ResultSet rs;
-             Statement st= conec.createStatement();
-             rs=st.executeQuery(sql);
-             while(rs.next()){
-                 System.out.println(rs.getObject("codigo"));
-                 System.out.println(rs.getObject("nombre"));
-                 System.out.println(rs.getObject("descripcion"));
-                 System.out.println(rs.getObject("precio"));
-                 System.out.println(rs.getObject("FechaCreacion"));
-                 System.out.println(rs.getObject("FechaActualizacion"));
-                 System.out.println(rs.getObject("FechaEliminacion"));
-                 
-                 
-             }
-             
-        }catch(Exception e){
-            System.out.println(e.toString());
-       }
-         con.Desconectar();
+        con.Desconectar();
     }
 
 }
