@@ -17,7 +17,7 @@ public class Conexion {
     private String url = "localhost";
     private String user = "postgres";
     private String pwd = "cristian20";
-    private String bd = "restauranteonline";
+    private String bd = "restaurantonline";
 
     public Conexion() {
     }

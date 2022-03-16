@@ -14,32 +14,34 @@ import java.util.ArrayList;
  */
 public class Usuario extends Producto {
 
-    String codigo;
-    String nombreusuario;
+    int codigo;
+    String nombre_usuario;
     String contraseña;
+    String sexo;
+    int edad;
 
-    public Usuario(String codigo, String nombreusuario, String contraseña, String nombre) {
+    public Usuario(int codigo, String nombreusuario, String contraseña, String nombre,String sexo,int edad) {
 
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public void setNombreusuario(String nombreusuario) {
-        this.nombreusuario = nombreusuario;
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
     }
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
 
-    public String getCodigo() {
+    public int getcodigo() {
         return codigo;
     }
 
-    public String getNombreusuario() {
-        return nombreusuario;
+    public String getNombre_usuario() {
+        return nombre_usuario;
     }
 
     public String getContraseña() {
@@ -49,35 +51,22 @@ public class Usuario extends Producto {
     public Usuario() {
 
     }
+    
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
 
-    public static void main(String[] args) {
-        Usuario u1 = new Usuario();
-        Usuario u2 = new Usuario();
-        Usuario u3 = new Usuario();
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
 
-        ArrayList<Usuario> listpro = new ArrayList<>();
-        listpro.add(u1);
-        listpro.add(u2);
-        listpro.add(u3);
+    public String getSexo() {
+        return sexo;
+    }
 
-        u1.setCodigo("2421");
-        u1.setNombreusuario("gerardo");
-        u1.setContraseña("Gerardunsis");
-
-        u1.setCodigo("2422");
-        u1.setNombreusuario("Alberto");
-        u1.setContraseña("AlbertoUnsis");
-
-        u1.setCodigo("2423");
-        u1.setNombreusuario("Matilde");
-        u1.setContraseña("MatildeUnsis");
-
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Codigo: " + listpro.get(i).getCodigo() + "\n");
-            System.out.println("Descripción: " + listpro.get(i).getNombreusuario() + "\n");
-            System.out.println("Nombre: " + listpro.get(i).getContraseña() + "\n");
-
-        }
+    public int getEdad() {
+        return edad;
+    }
 
     }
-}
+
