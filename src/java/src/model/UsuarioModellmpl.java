@@ -1,7 +1,7 @@
 /*
     Fecha de creación : 8/03/2022, 11:45:34 AM
     Author: Cristian Adair Ramirez Rodriguez
-    Fecha de actualizacion:15/03/2022, 11:50:34 AM
+    Fecha de actualizacion:16/03/2022, 11:50:34 AM
     Descripcion:Usuarios
  */
 package src.model;
@@ -36,7 +36,6 @@ public class UsuarioModellmpl implements IUsuarioModel {
         }
     }
 
-    @Override
     public List<Usuario> obtenerRegistros() {
         Usuario usu = new Usuario();
         List<Usuario> lista = new ArrayList<Usuario>();
@@ -62,41 +61,18 @@ public class UsuarioModellmpl implements IUsuarioModel {
         Usuario a = new Usuario();
         a.setCodigo(1);
         a.setNombre_usuario("cristian");
-        a.setContraseña("Rober123");
-        a.setNombre("Roberto");
+        a.setContraseña("cristian20");
+        a.setNombre("cristian");
         a.setSexo("Hombre");
-        a.setEdad(18);
+        a.setEdad(21);
         UsuarioModellmpl um = new UsuarioModellmpl();
         um.crearRegisto(a);
         // um.obtenerRegistros();
         //um.actualizaRegistro(a);
-//        um.actualizarRegistro(a);
-//        um.eliminarResgistro(1);
+        //um.eliminarRegistro(1);
         //System.out.println(um.obtenerRegistro(1));
         //System.out.println(um.obtenerRegistros());
     }
-
-    @Override
-    public void crearRegistro(Usuario usuario) {
-        try {
-            conexion = new Conexion();
-            conexion.Conectar();
-            connection = conexion.getConnection();
-            String sql = "insert into usuario (codigo,nombre_usuario,contraseña,nombre,sexo,edad) VALUES(?,?,?,?,?,?);";
-            PreparedStatement s = connection.prepareStatement(sql);
-            s.setInt(1, usuario.getcodigo());
-            s.setString(2, usuario.getNombre_usuario());
-            s.setString(3, usuario.getContraseña());
-            s.setString(4, usuario.getNombre());
-            s.setString(5, usuario.getSexo());
-            s.setInt(6, usuario.getEdad());
-            conexion.Desconectar();
-        } catch (Exception ex) {
-            System.out.println("Error de obetener registro= " + ex);
-        }
-    }
-
-    @Override
     public void actualizaRegistro(Usuario usuario) {
         try {
             conexion = new Conexion();
@@ -104,6 +80,7 @@ public class UsuarioModellmpl implements IUsuarioModel {
             connection = conexion.getConnection();
             String sql = "update usuario set nombre_usuario=?, contraseña=?, nombre=?, sexo=?, edad=? where codigo=" + usuario.getcodigo() + ";";
             PreparedStatement st = connection.prepareStatement(sql);
+            
             st.setString(1, usuario.getNombre_usuario());
             st.setString(2, usuario.getContraseña());
             st.setString(3, usuario.getNombre());
@@ -132,12 +109,27 @@ public class UsuarioModellmpl implements IUsuarioModel {
     }
 
     @Override
-    public void insertarDatos(String codigo, String nombre, float precio) {
+    public Usuario obtenerRegistro(int idUsuario) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Usuario obtenerRegistro(int idUsuario) {
+    public void crearRegistro(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Usuario> obtenerRegistros(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void actualizarRegistro() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Usuario> obtenerRegistro(Usuario usuario) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

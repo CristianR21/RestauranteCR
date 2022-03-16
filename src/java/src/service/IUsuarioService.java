@@ -1,10 +1,8 @@
 /*
-    Fecha de creación : 11/03/2022, 10:36:34 AM
-    Author: Cristian Adair Ramirez Rodriguez
-    Fecha de actualizacion:12/03/2022, 10:00:34 AM
-    Descripcion:Usuarios
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package src.model;
+package src.service;
 
 import java.util.List;
 import src.entity.Usuario;
@@ -13,14 +11,10 @@ import src.entity.Usuario;
  *
  * @author labso07
  */
-public interface IUsuarioModel {
+public interface IUsuarioService {
     public void crearRegistro(Usuario usuario);
     public void actualizaRegistro(Usuario usuario);
     public void eliminarRegistro(int idUsuario);
     public List<Usuario> obtenerRegistros(Usuario usuario);
     public Usuario obtenerRegistro(int idUsuario);
-
-    public void actualizarRegistro();
-
-    public List<Usuario> obtenerRegistro(Usuario usuario);
 }
