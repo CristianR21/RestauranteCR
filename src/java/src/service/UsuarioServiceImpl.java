@@ -42,4 +42,9 @@ public class UsuarioServiceImpl implements IUsuarioService{
         return modelo.obtenerRegistro(idUsuario);
     }
 
+    @Override
+    public List<Usuario> obtenerRegistros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
  }
