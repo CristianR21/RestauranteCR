@@ -30,6 +30,12 @@ public class ListarUsuarioServlet extends HttpServlet {
         out.println("<!DOCTYPE html>");
         out.println("<html");
         out.println("<head>");
+        String http;
+//        table tr:hover{
+//                background-color:blue;
+//                cursor:pointer;
+//            }
+    //out.println("<link rel='stylesheet' href'"+http://localhost:8080/restauranteonline/resources/);
         out.println("</head>");
         out.println("<body>");
         out.println("<table borde='2'");
